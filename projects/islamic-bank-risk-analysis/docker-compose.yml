@@ -1,0 +1,92 @@
+version: '3.8'
+
+# ══════════════════════════════════════════════════════
+#  ISLOMIY BANK RISK ANALYSIS — Docker Compose
+#  Profiller:
+#    dev  → oddiy ishlab chiqish (default)
+#    prod → bank serveri uchun (Nginx + SSL)
+# ══════════════════════════════════════════════════════
+
+services:
+
+  # ─── PostgreSQL ma'lumotlar bazasi ─────────────────
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-ibra_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-ibra_pass_change_me}
+      POSTGRES_DB: ${DB_NAME:-islamicbank_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-ibra_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── FastAPI Asosiy ilova ──────────────────────────
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - DATABASE_URL=postgresql://${DB_USER:-ibra_user}:${DB_PASSWORD:-ibra_pass_change_me}@db:5432/${DB_NAME:-islamicbank_db}
+      - SECRET_KEY=${SECRET_KEY:-dev_secret_key_change_in_production}
+      - PRODUCTION=${PRODUCTION:-false}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-http://localhost:8000,http://localhost:3000}
+    volumes:
+      - ./backend/saved_models:/app/backend/saved_models
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ─── Nginx (faqat prod profili uchun) ─────────────
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    profiles: ["prod"]
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+
+  # ─── pgAdmin (faqat dev profili uchun) ────────────
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    profiles: ["dev"]
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@islamicbank.uz
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
+
+# ══════════════════════════════════════════════════════
+#  ISHGA TUSHIRISH:
+#
+#  Development (oddiy):
+#    docker-compose up -d
+#
+#  Production (bank serveri):
+#    docker-compose --profile prod up -d
+#
+#  Loglarni ko'rish:
+#    docker-compose logs -f app
+# ══════════════════════════════════════════════════════

@@ -1,0 +1,34 @@
+# ─── Core API Framework ──────────────────────────────────────────────
+fastapi
+uvicorn[standard]
+python-multipart
+
+# ─── Data & ML ───────────────────────────────────────────────────────
+numpy
+pandas
+scikit-learn
+scipy
+matplotlib
+seaborn
+joblib
+imbalanced-learn
+
+# ─── Database ────────────────────────────────────────────────────────
+sqlalchemy
+psycopg2-binary
+alembic
+
+# ─── Advanced ML (optional but recommended) ─────────────────────────
+xgboost
+shap
+
+# ─── Authentication & Security ────────────────────────────────────────
+python-jose[cryptography]
+bcrypt
+passlib[bcrypt]
+
+# ─── Configuration ───────────────────────────────────────────────────
+python-dotenv
+
+# ─── ML Experiment tracking (optional) ──────────────────────────────
+# mlflow  # Uncomment if using MLflow tracking server

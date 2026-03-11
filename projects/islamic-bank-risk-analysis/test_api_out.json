@@ -1,0 +1,28 @@
+{
+  "eda_keys": [
+    "total_records",
+    "default_rate",
+    "by_service",
+    "avg_kredit_ball",
+    "avg_pd",
+    "avg_ltv",
+    "avg_sharia",
+    "risk_distribution",
+    "sector_default",
+    "region_default"
+  ],
+  "has_sector_defaults": false,
+  "monte_keys": [
+    "service",
+    "S0",
+    "n_sim",
+    "horizon",
+    "p5",
+    "p50",
+    "p95",
+    "days",
+    "var99",
+    "prob_loss",
+    "mean_final"
+  ]
+}

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IBRA — Islamic Bank Risk Intelligence Platform</title>
+  <meta name="description" content="O'zbekiston islom banklari uchun sun'iy intellekt asosidagi risk boshqaruv tizimi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-dark: #9A7A30;
+      --green: #22C55E;
+      --blue: #3B82F6;
+      --purple: #8B5CF6;
+      --red: #EF4444;
+      --bg-dark: #060D1A;
+      --bg-card: #0D1829;
+      --bg-card2: #111E33;
+      --border: rgba(201,168,76,0.18);
+      --text: #F0F4FF;
+      --text-muted: #7A90B0;
+      --font: 'Plus Jakarta Sans', sans-serif;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-dark);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 60px;
+      background: rgba(6,13,26,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 20px; font-weight: 800; color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo img { width: 42px; height: 42px; object-fit: contain; border-radius: 8px; }
+    .nav-logo span { color: var(--text); font-weight: 400; font-size: 13px; display: block; letter-spacing: 0; margin-top: -2px; }
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000; padding: 10px 24px; border-radius: 8px;
+      font-weight: 700; font-size: 14px; text-decoration: none;
+      transition: opacity 0.2s; white-space: nowrap;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 60px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 800px 600px at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 600px 400px at 80% 20%, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3);
+      color: var(--gold); padding: 6px 16px; border-radius: 100px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 24px;
+    }
+    .hero-badge i { font-size: 10px; }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero h1 .accent { color: var(--gold); }
+    .hero p {
+      font-size: 18px; color: var(--text-muted);
+      margin-bottom: 40px; max-width: 480px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000; padding: 16px 32px; border-radius: 10px;
+      font-weight: 700; font-size: 15px; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,0.3); }
+    .btn-secondary {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      color: var(--text); padding: 16px 32px; border-radius: 10px;
+      font-weight: 600; font-size: 15px; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 10px;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    /* Hero visual */
+    .hero-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 4px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.05);
+      position: relative;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute; top: -1px; left: 20px; right: 20px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      border-radius: 100px;
+    }
+    .vis-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .vis-title { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .status-live { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--green); }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{ opacity:1} 50%{opacity:0.3} }
+
+    .kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+    .kpi-mini {
+      background: var(--bg-card2); border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px; padding: 16px;
+    }
+    .kpi-mini-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+    .kpi-mini-val { font-size: 24px; font-weight: 800; font-family: var(--mono); }
+
+    .score-result {
+      background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(34,197,94,0.03));
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 14px; padding: 18px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .score-icon { font-size: 32px; }
+    .score-label { font-size: 12px; color: var(--text-muted); }
+    .score-val { font-size: 20px; font-weight: 800; color: var(--green); }
+    .score-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    .flow-mini {
+      display: flex; align-items: center; gap: 8px;
+      margin-top: 14px; font-size: 12px; color: var(--text-muted);
+      background: var(--bg-card2); border-radius: 10px; padding: 12px;
+      font-family: var(--mono);
+    }
+    .flow-tag {
+      background: rgba(201,168,76,0.15); color: var(--gold);
+      padding: 2px 8px; border-radius: 4px; font-size: 11px;
+    }
+    .flow-arrow { color: var(--gold-dark); }
+
+    /* ── STATS ─────────────────────────────────────────────────── */
+    .stats {
+      padding: 60px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden; }
+    .stat-item {
+      background: var(--bg-card); padding: 40px 32px; text-align: center;
+    }
+    .stat-num { font-size: 44px; font-weight: 800; font-family: var(--mono); color: var(--gold); }
+    .stat-label { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
+
+    /* ── SECTION ───────────────────────────────────────────────── */
+    section { padding: 100px 60px; max-width: 1200px; margin: 0 auto; }
+    .section-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+    .section-badge::before { content: ''; width: 24px; height: 2px; background: var(--gold); }
+    h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 800; margin-bottom: 16px; }
+    h2 .accent { color: var(--gold); }
+    .section-sub { font-size: 17px; color: var(--text-muted); max-width: 540px; }
+
+    /* ── HOW IT WORKS ─────────────────────────────────────────── */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 60px; }
+    .step {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 28px; position: relative; transition: all 0.3s;
+    }
+    .step:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-4px); }
+    .step-num {
+      font-size: 48px; font-weight: 800; color: rgba(201,168,76,0.15);
+      font-family: var(--mono); margin-bottom: 16px; line-height: 1;
+    }
+    .step-icon { font-size: 28px; margin-bottom: 14px; }
+    .step h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .step-connector {
+      position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+      width: 28px; height: 28px; background: var(--bg-dark);
+      border: 1px solid var(--border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 12px; z-index: 1;
+    }
+
+    /* ── FEATURES ─────────────────────────────────────────────── */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }
+    .feat-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; transition: all 0.3s;
+    }
+    .feat-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); }
+    .feat-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 18px;
+    }
+    .feat-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .feat-card p { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+    .feat-tag {
+      display: inline-block; margin-top: 14px;
+      background: rgba(201,168,76,0.1); color: var(--gold);
+      padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+    }
+
+    /* ── INTEGRATION DIAGRAM ──────────────────────────────────── */
+    .integration-box {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 48px; margin-top: 60px;
+    }
+    .int-flow {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; flex-wrap: wrap; margin: 40px 0;
+    }
+    .int-node {
+      background: var(--bg-card2); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 24px; text-align: center;
+      min-width: 140px;
+    }
+    .int-node.highlight {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.03));
+      box-shadow: 0 0 30px rgba(201,168,76,0.15);
+    }
+    .int-node i { font-size: 26px; margin-bottom: 8px; display: block; }
+    .int-node .nt { font-size: 13px; font-weight: 700; }
+    .int-node .ns { font-size: 11px; color: var(--text-muted); }
+    .int-arrow {
+      padding: 0 16px; color: var(--gold);
+      font-size: 20px; display: flex; align-items: center; gap: 8px;
+      flex-direction: column;
+    }
+    .int-arrow span { font-size: 10px; color: var(--text-muted); font-family: var(--mono); white-space: nowrap; }
+
+    /* ── PRICING ──────────────────────────────────────────────── */
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }
+    .price-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px; position: relative; transition: all 0.3s;
+    }
+    .price-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(160deg, rgba(201,168,76,0.08), var(--bg-card));
+    }
+    .price-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000; padding: 4px 16px; border-radius: 100px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; white-space: nowrap;
+    }
+    .price-tier { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+    .price-num { font-size: 40px; font-weight: 800; font-family: var(--mono); color: var(--gold); }
+    .price-num sup { font-size: 18px; vertical-align: top; margin-top: 8px; }
+    .price-period { font-size: 14px; color: var(--text-muted); }
+    .price-desc { font-size: 13px; color: var(--text-muted); margin: 16px 0 24px; }
+    .price-features { list-style: none; margin-bottom: 28px; }
+    .price-features li { padding: 8px 0; font-size: 13px; display: flex; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .price-features li:last-child { border-bottom: none; }
+    .price-features .chk { color: var(--green); font-size: 12px; margin-top: 2px; }
+    .price-btn {
+      display: block; text-align: center; padding: 14px;
+      border-radius: 10px; font-weight: 700; font-size: 14px;
+      text-decoration: none; transition: all 0.2s;
+    }
+    .price-btn.primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #000;
+    }
+    .price-btn.outline {
+      border: 1px solid var(--border); color: var(--text);
+      background: transparent;
+    }
+    .price-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    /* ── CTA ──────────────────────────────────────────────────── */
+    .cta-section {
+      margin: 0 60px 80px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(59,130,246,0.06));
+      border: 1px solid var(--border); border-radius: 24px;
+      padding: 80px 60px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 600px 400px at 50% 0%, rgba(201,168,76,0.08), transparent);
+    }
+    .cta-section h2 { font-size: 40px; margin-bottom: 16px; }
+    .cta-section p { font-size: 17px; color: var(--text-muted); margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-contact { display: flex; align-items: center; gap: 32px; justify-content: center; margin-top: 36px; flex-wrap: wrap; }
+    .contact-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--text-muted); }
+    .contact-item i { color: var(--gold); }
+
+    /* ── FOOTER ───────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border); padding: 40px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-brand { font-size: 18px; font-weight: 800; color: var(--gold); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--text-muted); font-size: 13px; text-decoration: none; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-right { font-size: 12px; color: var(--text-muted); }
+
+    /* ── ANIMATIONS ───────────────────────────────────────────── */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ───────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      section { padding: 60px 24px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .stats { padding: 40px 24px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .step-connector { display: none; }
+      .cta-section { margin: 0 24px 60px; padding: 48px 24px; }
+      footer { padding: 30px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">
+    <img src="assets/logo-majestic.png" alt="IBRA Logo" />
+    <div>
+      IBRA
+      <span>Islamic Bank Risk Analytics</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#how">Qanday ishlaydi</a>
+    <a href="#features">Imkoniyatlar</a>
+    <a href="#integration">Integratsiya</a>
+    <a href="#pricing">Narxlar</a>
+  </div>
+  <a href="/" class="nav-cta"><i class="fas fa-play"></i> Demo Kirish</a>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><i class="fas fa-mosque"></i> O'zbekiston Islom Moliyasi</div>
+      <h1>Islom Banki uchun <span class="accent">AI Risk</span> Intelligence</h1>
+      <p>XGBoost, Random Forest va 4 ta SOTA model asosida kredit riskini millisoniyalarda baholang. Shariat muvofiqligini avtomatik tekshiring.</p>
+      <div class="hero-actions">
+        <a href="/" class="btn-primary"><i class="fas fa-play-circle"></i> Jonli Demoni Ko'ring</a>
+        <a href="#integration" class="btn-secondary"><i class="fas fa-plug"></i> Integratsiya</a>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up">
+      <div class="vis-header">
+        <div class="vis-title">Kredit Risk Baholash</div>
+        <div class="status-live"><div class="status-dot"></div> Real Vaqt</div>
+      </div>
+
+      <div class="kpi-row">
+        <div class="kpi-mini">
+          <div class="kpi-mini-label">Default Ehtimoli (PD)</div>
+          <div class="kpi-mini-val" style="color:#22C55E">12.4%</div>
+        </div>
+        <div class="kpi-mini">
+          <div class="kpi-mini-label">Shariat Risk Indeksi</div>
+          <div class="kpi-mini-val" style="color:#C9A84C">0.874</div>
+        </div>
+      </div>
+
+      <div class="score-result">
+        <div class="score-icon">✅</div>
+        <div>
+          <div class="score-label">Model Tavsiyasi</div>
+          <div class="score-val">TASDIQLASH</div>
+          <div class="score-sub">Ishonch: 94.2% · Shariat: Muvofiq · EL: 2.8M UZS</div>
+        </div>
+      </div>
+
+      <div class="flow-mini">
+        <span class="flow-tag">1C Ariza</span>
+        <span class="flow-arrow">→</span>
+        <span>ML Engine</span>
+        <span class="flow-arrow">→</span>
+        <span class="flow-tag">JSON Natija</span>
+        <span style="margin-left:auto;opacity:0.5">~120ms</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ STATS ════════════════════════════════════════════════════════════ -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item fade-up">
+      <div class="stat-num">93.1%</div>
+      <div class="stat-label">Model AUC Aniqligi</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-num">4x</div>
+      <div class="stat-label">Ensemble Model (SOTA)</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-num">&lt;200ms</div>
+      <div class="stat-label">API Javob Vaqti</div>
+    </div>
+    <div class="stat-item fade-up">
+      <div class="stat-num">Basel III</div>
+      <div class="stat-label">Muvofiqlik Standarti</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HOW IT WORKS ═════════════════════════════════════════════════════ -->
+<section id="how">
+  <div class="section-badge">Jarayon</div>
+  <h2>Qanday <span class="accent">Ishlaydi?</span></h2>
+  <p class="section-sub">Bank tizimingizdan boshlab natijagacha to'liq avtomatlashtirilgan jarayon.</p>
+
+  <div class="steps">
+    <div class="step fade-up">
+      <div class="step-num">01</div>
+      <div class="step-icon">🏦</div>
+      <h3>Bank Arizasi</h3>
+      <p>1C yoki FLEXCUBE tizimida kredit ariza kiritiladi. Mijoz ma'lumotlari avtomatik yuboriladi.</p>
+      <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">02</div>
+      <div class="step-icon">🔌</div>
+      <h3>API Ulanish</h3>
+      <p>IBRA API millisoniyalarda arizani qabul qiladi. X-API-Key bilan xavfsiz autentifikatsiya.</p>
+      <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">03</div>
+      <div class="step-icon">🤖</div>
+      <h3>AI Tahlil</h3>
+      <p>4 ta ML model (XGBoost, Random Forest, LGBM, LogReg) va Monte-Carlo simulatsiyasi.</p>
+      <div class="step-connector"><i class="fas fa-chevron-right"></i></div>
+    </div>
+    <div class="step fade-up">
+      <div class="step-num">04</div>
+      <div class="step-icon">📊</div>
+      <h3>Natija</h3>
+      <p>APPROVE/REVIEW/REJECT tavsiyasi, PD score, Shariat muvofiqlik darajasi qaytariladi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FEATURES ══════════════════════════════════════════════════════════ -->
+<section id="features" style="padding-top:20px">
+  <div class="section-badge">Imkoniyatlar</div>
+  <h2>Xalqaro Standart, <span class="accent">Mahalliy Yechim</span></h2>
+  <p class="section-sub">O'zbekiston bozori va islom moliyasiga maxsus ishlab chiqilgan.</p>
+
+  <div class="features-grid">
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fas fa-brain"></i></div>
+      <h3>4 Model Ensemble</h3>
+      <p>XGBoost, Random Forest, LightGBM va Logistic Regression modellarini birlashtirgan SOTA ensemble. AUC: 0.931.</p>
+      <span class="feat-tag">Stacking meta-model</span>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:rgba(139,92,246,0.1);color:var(--purple)"><i class="fas fa-mosque"></i></div>
+      <h3>Shariat Risk Indeksi</h3>
+      <p>Gharar, Maysir, Zakat, Halal sertifikat asosida maxsus SRI indeksi. AAOIFI standartlariga muvofiq.</p>
+      <span class="feat-tag">O'zbekistonda birinchi</span>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:rgba(59,130,246,0.1);color:var(--blue)"><i class="fas fa-chart-line"></i></div>
+      <h3>VaR · CVaR · Monte Carlo</h3>
+      <p>10,000 simulatsiya yo'llari bilan portfel riski prognozi. Basel III VaR(95%) metrikalari.</p>
+      <span class="feat-tag">Basel III</span>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:rgba(34,197,94,0.1);color:var(--green)"><i class="fas fa-eye"></i></div>
+      <h3>Explainable AI (XAI)</h3>
+      <p>SHAP qiymatlari asosida har bir qarorning sababi tushuntiriladi. Regulyator auditi uchun tayyor.</p>
+      <span class="feat-tag">SHAP metodologiyasi</span>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:rgba(239,68,68,0.1);color:var(--red)"><i class="fas fa-plug"></i></div>
+      <h3>Bank Integratsiyasi</h3>
+      <p>1C:Bank, Oracle FLEXCUBE, IBSO bilan REST API orqali integratsiya. On-premise yoki cloud.</p>
+      <span class="feat-tag">REST API / JSON</span>
+    </div>
+    <div class="feat-card fade-up">
+      <div class="feat-icon" style="background:rgba(201,168,76,0.1);color:var(--gold)"><i class="fas fa-sync-alt"></i></div>
+      <h3>Online Learning</h3>
+      <p>Yangi ma'lumotlar kelganda model avtomatik qayta o'qitiladi. Baza bilan sinxronlashadi.</p>
+      <span class="feat-tag">Incremental retraining</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INTEGRATION ═══════════════════════════════════════════════════════ -->
+<section id="integration" style="padding-top:20px">
+  <div class="section-badge">Texnik Integratsiya</div>
+  <h2>Bank Tizimingizga <span class="accent">Ulash</span></h2>
+  <p class="section-sub">Mavjud bank dasturiy ta'minotiga minimal o'zgarish bilan ulash mumkin.</p>
+
+  <div class="integration-box fade-up">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center">
+      <div>
+        <h3 style="margin-bottom:16px;font-size:20px">To'liq integratsiya — 3 qadam</h3>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0">1</div>
+            <div>
+              <div style="font-weight:600;margin-bottom:3px">Server o'rnatiladi</div>
+              <div style="font-size:13px;color:var(--text-muted)">Docker bilan bank serveriga 30 daqiqada o'rnatish</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0">2</div>
+            <div>
+              <div style="font-weight:600;margin-bottom:3px">API kalit beriladi</div>
+              <div style="font-size:13px;color:var(--text-muted)">Bank IT bo'limiga maxsus kalit va endpoint URL beriladi</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:14px;align-items:flex-start">
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0">3</div>
+            <div>
+              <div style="font-weight:600;margin-bottom:3px">1C ga 1 ta URL qo'shiladi</div>
+              <div style="font-size:13px;color:var(--text-muted)">1C dasturchi endpoint ni kredit forma ga ulaydi — tugadi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--bg-dark);border-radius:12px;padding:20px;font-family:var(--mono);font-size:11px;line-height:1.7">
+          <div style="color:var(--text-muted);margin-bottom:10px">// 1C dan so'rov yuborish (misol)</div>
+          <div style="color:#7dd3fc">POST</div>
+          <div style="color:var(--gold-light)">http://server:8000/api/v1/integration/score</div>
+          <br>
+          <div style="color:var(--text-muted)">Headers:</div>
+          <div style="color:#a5f3fc">X-API-Key: <span style="color:var(--green)">ibra_xxxxxxxxxxxx</span></div>
+          <br>
+          <div style="color:var(--text-muted)">// Javob:</div>
+          <div style="color:#86efac">{</div>
+          <div style="padding-left:16px">
+            <div><span style="color:#7dd3fc">"recommendation"</span>: <span style="color:var(--gold)">"APPROVE"</span>,</div>
+            <div><span style="color:#7dd3fc">"pd_score"</span>: <span style="color:#86efac">0.124</span>,</div>
+            <div><span style="color:#7dd3fc">"sri_index"</span>: <span style="color:#86efac">0.874</span>,</div>
+            <div><span style="color:#7dd3fc">"sharia_compliant"</span>: <span style="color:var(--gold)">true</span></div>
+          </div>
+          <div style="color:#86efac">}</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;padding-top:32px;border-top:1px solid var(--border)">
+      <div style="text-align:center;font-size:13px;color:var(--text-muted);margin-bottom:24px">Qo'llab-quvvatlanadigan bank tizimlari</div>
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap">
+        <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:600">🏦 1C:Bank</div>
+        <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:600">⚙️ Oracle FLEXCUBE</div>
+        <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:600">🔧 IBSO / RS-Bank</div>
+        <div style="background:var(--bg-card2);border:1px solid var(--border);border-radius:10px;padding:12px 20px;font-size:13px;font-weight:600">📋 Istalgan REST API</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ═══════════════════════════════════════════════════════════ -->
+<section id="pricing" style="padding-top:20px">
+  <div class="section-badge">Narxlar</div>
+  <h2>Bankingiz Uchun <span class="accent">Mos Tarif</span></h2>
+  <p class="section-sub">Pilot dasturdan korporativ litsenziyagacha.</p>
+
+  <div class="pricing-grid">
+    <div class="price-card fade-up">
+      <div class="price-tier">Pilot</div>
+      <div class="price-num">Bepul</div>
+      <div class="price-period">90 kun</div>
+      <div class="price-desc">Bank tizimingizda sinab ko'ring. Hech qanday majburiyat yo'q.</div>
+      <ul class="price-features">
+        <li><span class="chk">✓</span>500 ta kredit baholash/oy</li>
+        <li><span class="chk">✓</span>API integratsiya qo'llab-quvvatlash</li>
+        <li><span class="chk">✓</span>Dashboard va hisobotlar</li>
+        <li><span class="chk">✓</span>Onlayn texnik yordam</li>
+        <li><span class="chk" style="opacity:0.3">✗</span>On-premise o'rnatish</li>
+      </ul>
+      <a href="#cta" class="price-btn outline">Boshlash</a>
+    </div>
+
+    <div class="price-card featured fade-up">
+      <div class="price-badge">🔥 Eng Ommabop</div>
+      <div class="price-tier">Standard</div>
+      <div class="price-num"><sup>$</sup>1,500</div>
+      <div class="price-period">oyiga · yillik to'lov</div>
+      <div class="price-desc">Kichik va o'rta islom banklari uchun ideal. Barcha asosiy imkoniyatlar.</div>
+      <ul class="price-features">
+        <li><span class="chk">✓</span><strong>Cheksiz</strong> kredit baholash</li>
+        <li><span class="chk">✓</span>On-premise yoki cloud deploy</li>
+        <li><span class="chk">✓</span>1C / FLEXCUBE integratsiya</li>
+        <li><span class="chk">✓</span>7/24 texnik yordam (Toshkent)</li>
+        <li><span class="chk">✓</span>Oylik model yangilanishi</li>
+      </ul>
+      <a href="#cta" class="price-btn primary">Demo So'rash</a>
+    </div>
+
+    <div class="price-card fade-up">
+      <div class="price-tier">Enterprise</div>
+      <div class="price-num" style="font-size:28px;padding-top:6px">Kelishuv</div>
+      <div class="price-period">yilik litsenziya</div>
+      <div class="price-desc">Yirik banklar va holding kompaniyalar uchun maxsus shartlar.</div>
+      <ul class="price-features">
+        <li><span class="chk">✓</span>Ko'p bank (multi-tenant)</li>
+        <li><span class="chk">✓</span>Maxsus ML model o'qitish</li>
+        <li><span class="chk">✓</span>Shaxsiy dasturchi xizmati</li>
+        <li><span class="chk">✓</span>Markaziy bank hisoboti</li>
+        <li><span class="chk">✓</span>SLA 99.9% uptime</li>
+      </ul>
+      <a href="#cta" class="price-btn outline">Aloqa Qiling</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ═══════════════════════════════════════════════════════════════ -->
+<div class="cta-section" id="cta">
+  <div class="section-badge" style="justify-content:center">Aloqa</div>
+  <h2>Bankingiz Uchun <span class="accent">Demo</span> Oling</h2>
+  <p>30 daqiqalik onlayn demo — tizim qanday ishlashini ko'ring va savollaringizni bering.</p>
+  <div class="cta-actions">
+    <a href="/" class="btn-primary"><i class="fas fa-desktop"></i> Jonli Demoga Kirish</a>
+    <a href="mailto:info@islamicbankrisk.uz" class="btn-secondary"><i class="fas fa-envelope"></i> Xat Yuborish</a>
+  </div>
+  <div class="cta-contact">
+    <div class="contact-item"><i class="fas fa-phone"></i> +998 90 000 00 00</div>
+    <div class="contact-item"><i class="fas fa-envelope"></i> info@islamicbankrisk.uz</div>
+    <div class="contact-item"><i class="fab fa-telegram"></i> @IBRAweb</div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">IBRA</div>
+  <div class="footer-links">
+    <a href="#how">Qanday ishlaydi</a>
+    <a href="#features">Imkoniyatlar</a>
+    <a href="#integration">Integratsiya</a>
+    <a href="/">Dashboard</a>
+  </div>
+  <div class="footer-right">© 2026 Islamic Bank Risk Analytics · Toshkent, O'zbekiston</div>
+</footer>
+
+<script>
+  // Scroll animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Animated counters
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const step = target / 60;
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { el.textContent = target + suffix; clearInterval(timer); return; }
+      el.textContent = Math.floor(start) + suffix;
+    }, 20);
+  }
+</script>
+</body>
+</html>
