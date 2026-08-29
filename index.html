@@ -1,213 +1,904 @@
-<!DOCTYPE html>
-<html lang="uz">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jumanazar Abdirasulov | Professional Portfolio</title>
-    
-    <!-- Meta Tags -->
-    <meta name="description" content="Jumanazar Abdirasulov - Data Analyst & Scientist specializing in predictive modeling and business intelligence.">
-    <meta name="author" content="Jumanazar Abdirasulov">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Jumanazar Abdirasulov - AI Engineer at TenzorSoft, Tashkent. RAG pipelines, autonomous agents, computer vision, geospatial ML and financial risk models.">
+<meta name="author" content="Jumanazar Abdirasulov">
+<link rel="canonical" href="https://abdirasulovjumanazar.github.io/myportfolio/">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Jumanazar Abdirasulov - AI Engineer">
+<meta property="og:description" content="Jumanazar Abdirasulov - AI Engineer at TenzorSoft, Tashkent. RAG pipelines, autonomous agents, computer vision, geospatial ML and financial risk models.">
+<meta property="og:url" content="https://abdirasulovjumanazar.github.io/myportfolio/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxMDAgMTAwJz48dGV4dCB5PScuOWVtJyBmb250LXNpemU9Jzg4Jz7wn5uw77iPPC90ZXh0Pjwvc3ZnPg==">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Jumanazar Abdirasulov</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
+<style>
+  :root{
+    --ground:#F1F3F6;
+    --surface:#FAFBFD;
+    --ink:#10192A;
+    --ink-2:#46536A;
+    --ink-3:#7C889C;
+    --line:#DAE0E9;
+    --line-soft:#E6EAF1;
+    --accent:#1F3FA8;
+    --accent-2:#0E7A85;
+    --accent-wash:rgba(31,63,168,.07);
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+    --body:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0A0F18;
+      --surface:#101827;
+      --ink:#E8EDF5;
+      --ink-2:#A6B2C6;
+      --ink-3:#6F7D93;
+      --line:#1F2A3A;
+      --line-soft:#182232;
+      --accent:#87A3FF;
+      --accent-2:#45C9D2;
+      --accent-wash:rgba(135,163,255,.09);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0A0F18;
+    --surface:#101827;
+    --ink:#E8EDF5;
+    --ink-2:#A6B2C6;
+    --ink-3:#6F7D93;
+    --line:#1F2A3A;
+    --line-soft:#182232;
+    --accent:#87A3FF;
+    --accent-2:#45C9D2;
+    --accent-wash:rgba(135,163,255,.09);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  ::selection{background:var(--accent);color:var(--ground)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+  .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+
+  /* ---------- type utilities ---------- */
+  .mono{
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:clamp(56px,10vw,110px) 0 0}
+  .hero .eyebrow{color:var(--ink-3);display:flex;flex-wrap:wrap;gap:.35em 1.4em;align-items:baseline;margin:0}
+  .hero .eyebrow .live{color:var(--accent-2);display:inline-flex;align-items:center;gap:.55em}
+  .dot{width:6px;height:6px;background:var(--accent-2);border-radius:50%;display:inline-block}
+  h1{
+    font-family:var(--display);
+    font-weight:800;
+    font-size:clamp(2.7rem,8.2vw,5.4rem);
+    line-height:.95;
+    letter-spacing:-.035em;
+    margin:.32em 0 0;
+    text-wrap:balance;
+  }
+  .roleline{
+    font-family:var(--display);
+    font-weight:500;
+    font-size:clamp(1rem,2.4vw,1.35rem);
+    letter-spacing:-.01em;
+    color:var(--ink-2);
+    margin:.75rem 0 0;
+  }
+  .lede{
+    font-size:clamp(1.12rem,2.1vw,1.34rem);
+    line-height:1.55;
+    max-width:41ch;
+    margin:clamp(26px,4vw,40px) 0 0;
+    font-weight:400;
+  }
+  .lede em{font-style:italic;color:var(--ink-2)}
+
+  .heroGrid{display:grid;gap:clamp(28px,4vw,52px)}
+  @media (min-width:900px){
+    .heroGrid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:end}
+  }
+
+  .facts{display:grid;gap:0;border-top:1px solid var(--line);margin:0}
+  .fact{display:grid;grid-template-columns:8.5rem minmax(0,1fr);gap:1rem;padding:.85rem 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+  .fact dt{color:var(--ink-3)}
+  .fact dd{margin:0;font-size:.98rem;line-height:1.45}
+  .fact dd b{font-weight:500;font-variant-numeric:tabular-nums}
+
+  /* decorative signal band */
+  .band{margin:clamp(44px,7vw,84px) 0 0}
+  #trace{display:block;width:100%;height:110px}
+  .ruler{height:1px;background:var(--line)}
+
+  /* ---------- shell / rail ---------- */
+  .shell{display:grid;gap:clamp(40px,6vw,72px);padding:clamp(40px,6vw,72px) 0 0}
+  @media (min-width:1080px){
+    .shell{grid-template-columns:170px minmax(0,1fr)}
+  }
+  .rail{display:none}
+  @media (min-width:1080px){
+    .rail{display:block;position:sticky;top:40px;align-self:start}
+    .rail ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+    .rail a{
+      text-decoration:none;color:var(--ink-3);
+      display:flex;align-items:center;gap:.6rem;
+      transition:color .2s;
+    }
+    .rail a::before{
+      content:"";width:14px;height:1px;background:currentColor;flex:none;transition:width .2s;
+    }
+    .rail a:hover{color:var(--ink)}
+    .rail a[aria-current="true"]{color:var(--accent)}
+    .rail a[aria-current="true"]::before{width:26px}
+    .railfoot{margin-top:2.2rem;padding-top:1.1rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.45rem}
+    .railfoot a{text-decoration:none;color:var(--ink-3)}
+    .railfoot a:hover{color:var(--accent)}
+  }
+
+  /* ---------- sections ---------- */
+  section{scroll-margin-top:28px}
+  section + section{margin-top:clamp(56px,8vw,96px)}
+  .shead{display:flex;align-items:baseline;gap:1rem;border-bottom:1px solid var(--line);padding-bottom:.7rem;margin-bottom:clamp(24px,3.4vw,38px)}
+  .shead h2{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.35rem,3vw,1.85rem);
+    letter-spacing:-.025em;margin:0;line-height:1.1;
+  }
+  .shead .count{color:var(--ink-3);margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+  /* ---------- pillars ---------- */
+  .pillars{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media (min-width:760px){.pillars{grid-template-columns:repeat(3,1fr)}}
+  .pillar{background:var(--surface);padding:clamp(18px,2.4vw,26px)}
+  .pillar h3{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.01em;margin:.55rem 0 .4rem}
+  .pillar p{margin:0;font-size:.96rem;line-height:1.5;color:var(--ink-2)}
+  .pillar .idx{color:var(--accent);margin:0}
+
+  /* ---------- experience ---------- */
+  .job{display:grid;gap:.4rem 2rem}
+  @media (min-width:820px){.job{grid-template-columns:12rem minmax(0,1fr)}}
+  .job .when{color:var(--ink-3);padding-top:.4rem;font-variant-numeric:tabular-nums;margin:0}
+  .job h3{font-family:var(--display);font-weight:700;font-size:clamp(1.15rem,2.2vw,1.4rem);letter-spacing:-.02em;margin:0}
+  .job .org{color:var(--accent);font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;margin:.35rem 0 .9rem;text-transform:uppercase}
+  ul.duties{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.62rem;max-width:62ch}
+  ul.duties li{position:relative;padding-left:1.25rem;font-size:1rem;line-height:1.55}
+  ul.duties li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:1px;background:var(--accent)}
+
+  /* ---------- work entries ---------- */
+  .works{display:flex;flex-direction:column}
+  .work{
+    padding:clamp(24px,3.4vw,34px) 0;
+    border-top:1px solid var(--line-soft);
+    display:grid;gap:.5rem 2rem;
+  }
+  .work:first-child{border-top:0;padding-top:0}
+  @media (min-width:820px){.work{grid-template-columns:12rem minmax(0,1fr)}}
+  .work .meta{display:flex;flex-direction:column;gap:.3rem;color:var(--ink-3);padding-top:.4rem}
+  .work .meta .domain{color:var(--accent-2)}
+  .work h3{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(1.2rem,2.4vw,1.55rem);letter-spacing:-.025em;margin:0 0 .5rem;
+    text-wrap:balance;
+  }
+  .work p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .work p strong{color:var(--ink);font-weight:500}
+
+  .metrics{display:flex;flex-wrap:wrap;gap:1.1rem 2.2rem;margin-top:1.15rem}
+  .metric{display:flex;flex-direction:column;gap:.15rem}
+  .metric b{
+    font-family:var(--display);font-weight:700;font-size:1.42rem;line-height:1;
+    letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--ink);
+  }
+  .metric span{color:var(--ink-3)}
+
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:1.15rem}
+  .chip{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;
+    border:1px solid var(--line);color:var(--ink-2);
+    padding:3px 8px;border-radius:2px;background:var(--surface);
+    white-space:nowrap;
+  }
+
+  /* compact list */
+  .more{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:clamp(24px,3vw,34px)}
+  @media (min-width:760px){.more{grid-template-columns:1fr 1fr}}
+  .more article{background:var(--surface);padding:clamp(16px,2.2vw,22px)}
+  .more h4{font-family:var(--display);font-weight:600;font-size:1.02rem;letter-spacing:-.01em;margin:.5rem 0 .35rem}
+  .more p{margin:0;font-size:.94rem;line-height:1.5;color:var(--ink-2)}
+  .more .domain{color:var(--accent-2);margin:0}
+
+  /* ---------- stack ---------- */
+  .stack{display:grid;gap:0;margin:0}
+  .row{display:grid;gap:.5rem 2rem;padding:.95rem 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+  @media (min-width:760px){.row{grid-template-columns:12rem minmax(0,1fr)}}
+  .row:first-child{border-top:1px solid var(--line-soft)}
+  .row dt{color:var(--ink-3)}
+  .row dd{margin:0;display:flex;flex-wrap:wrap;gap:5px}
+
+  /* ---------- education ---------- */
+  .edu{display:grid;gap:clamp(28px,4vw,44px)}
+  @media (min-width:820px){.edu{grid-template-columns:1.3fr 1fr}}
+  .entry{border-top:1px solid var(--line-soft);padding:.95rem 0;display:grid;gap:.15rem 2rem}
+  @media (min-width:820px){.entry{grid-template-columns:minmax(0,1fr) auto}}
+  .entry h3{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.012em;margin:0}
+  .entry .sub{color:var(--ink-2);font-size:.95rem;margin:.2rem 0 0}
+  .entry .when{color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap;margin:0}
+  .langhead{color:var(--ink-3);margin:0 0 1rem}
+  .langs{display:flex;flex-direction:column;gap:.8rem}
+  .lang{display:grid;grid-template-columns:6.5rem 1fr auto;gap:.9rem;align-items:center;font-size:.98rem}
+  .lang .bar{height:3px;background:var(--line);position:relative;overflow:hidden}
+  .lang .bar i{position:absolute;top:0;bottom:0;left:0;background:var(--accent);display:block}
+  .lang .lvl{color:var(--ink-3)}
+
+  /* ---------- contact ---------- */
+  .contact{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media (min-width:700px){.contact{grid-template-columns:repeat(2,1fr)}}
+  @media (min-width:1000px){.contact{grid-template-columns:repeat(4,1fr)}}
+  .contact a,
+  .contact .info{
+    background:var(--surface);padding:clamp(18px,2.4vw,24px);
+    text-decoration:none;display:flex;flex-direction:column;gap:.45rem;
+    transition:background .18s,color .18s;
+  }
+  .contact a span,.contact .info span{color:var(--ink-3)}
+  .contact a b,.contact .info b{font-family:var(--display);font-weight:600;font-size:.98rem;letter-spacing:-.01em;word-break:break-word}
+  .contact a:hover{background:var(--accent-wash)}
+  .contact a:hover b{color:var(--accent)}
+
+  footer{
+    margin-top:clamp(48px,7vw,84px);
+    padding:1.6rem 0 clamp(40px,6vw,64px);
+    border-top:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:space-between;
+    color:var(--ink-3);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important}
+  }
+
+  @media print{
+    body{background:#fff;color:#000;font-size:10.5pt}
+    .rail,.band,footer{display:none}
+    .shell{display:block;padding-top:0}
+    section{break-inside:avoid}
+    .work,.pillar,.more article,.contact a{background:#fff}
+  }
+</style>
 </head>
 <body>
 
-    <!-- ─── NAVIGATION ─── -->
-    <header id="header">
-        <div class="container nav">
-            <a href="#" class="logo">JUMANAZAR<span>.DATA</span></a>
-            <ul class="nav-links">
-                <li><a href="#about">Haqida</a></li>
-                <li><a href="#skills">Ko'nikmalar</a></li>
-                <li><a href="#projects">Loyihalar</a></li>
-                <li><a href="#contact">Aloqa</a></li>
-            </ul>
-            <a href="https://t.me/Abdirasulov_Jumanazar" target="_blank" class="btn btn-secondary" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
-                Bog'lanish <i class="fab fa-telegram" style="margin-left: 10px;"></i>
-            </a>
-        </div>
-    </header>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="heroGrid">
+      <div>
+        <p class="mono eyebrow">
+          <span>Tashkent, Uzbekistan</span>
+          <span class="live"><span class="dot"></span>Open to AI / ML roles</span>
+        </p>
+        <h1>Jumanazar<br>Abdirasulov</h1>
+        <p class="roleline">AI Engineer &nbsp;·&nbsp; Data Scientist &nbsp;·&nbsp; Data Analyst</p>
+        <p class="lede">
+          I build systems that <em>watch something and decide</em> — cameras that catch a missing
+          hard hat, satellites that read a field's health, sensors that flag a failing line, and
+          models that price credit risk. Then I ship them as services other teams can call.
+        </p>
+      </div>
+
+      <dl class="facts">
+        <div class="fact"><dt class="mono">Now</dt><dd>AI Engineer at <b>TenzorSoft</b> — chatbots, RAG pipelines, autonomous agents</dd></div>
+        <div class="fact"><dt class="mono">Studying</dt><dd>MSc Data Science, <b>TUIT</b> Tashkent — 2nd year</dd></div>
+        <div class="fact"><dt class="mono">Built</dt><dd><b>8</b> production and research systems across finance, agriculture, industry and government</dd></div>
+        <div class="fact"><dt class="mono">Core</dt><dd>Python · FastAPI · PyTorch · scikit-learn · LangGraph · PostgreSQL · Docker</dd></div>
+      </dl>
+    </div>
+
+    <div class="band" aria-hidden="true">
+      <canvas id="trace"></canvas>
+      <div class="ruler"></div>
+    </div>
+  </header>
+
+  <div class="shell">
+
+    <nav class="rail mono" aria-label="Sections">
+      <ol>
+        <li><a href="#focus">Focus</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#work">Selected work</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+      <div class="railfoot">
+        <a href="mailto:abdirasulovjumanazar@gmail.com">Email</a>
+        <a href="https://github.com/abdirasulovjumanazar" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/abdirasulovjumanazar" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </nav>
 
     <main>
-        <!-- ─── HERO ─── -->
-        <section class="section-hero container" id="home">
-            <div class="hero-glow"></div>
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-circle"></i> Yangi loyihalar uchun ochiq
-                </div>
-                <h1>Men <span>Jumanazar</span>, <br><span class="gradient-text">Data Scientist</span></h1>
-                <p class="hero-description">
-                    Murakkab ma'lumotlarni biznes qiymatiga aylantiraman. Mashinali o'rganish va analitika orqali kelajakni bashorat qiluvchi yechimlar yarataman.
-                </p>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn btn-primary">Loyihalarimni ko'rish</a>
-                    <a href="#contact" class="btn btn-secondary">Konsultatsiya olish</a>
-                </div>
-            </div>
-        </section>
 
-        <!-- ─── SKILLS ─── -->
-        <section id="skills" class="container">
-            <span class="section-tag">Ekspertiza</span>
-            <h2 class="section-title">Texnologik Arsenal</h2>
-            
-            <div class="skills-grid">
-                <div class="skill-card glass reveal">
-                    <div class="skill-icon"><i class="fab fa-python"></i></div>
-                    <h3>Advanced Python</h3>
-                    <p>Mashinali o'rganish (ML), Chuqur o'rganish (DL) va ma'lumotlar muhandisligi uchun optimallashtirilgan Python ekotizimi.</p>
-                </div>
-                <div class="skill-card glass reveal">
-                    <div class="skill-icon"><i class="fas fa-microchip"></i></div>
-                    <h3>ML Architecture</h3>
-                    <p>Ensemble modellari, Time-series forecasting va tasvirlarni qayta ishlash tizimlarini loyihalash va optimallashtirish.</p>
-                </div>
-                <div class="skill-card glass reveal">
-                    <div class="skill-icon"><i class="fas fa-server"></i></div>
-                    <h3>MLOps & Backend</h3>
-                    <p>Modellarni FastAPI va Docker yordamida ishlab chiqarishga (Production) tayyorlash va deploy qilish.</p>
-                </div>
-                <div class="skill-card glass reveal">
-                    <div class="skill-icon"><i class="fas fa-chart-pie"></i></div>
-                    <h3>BI & Analytics</h3>
-                    <p>Katta hajmdagi ma'lumotlarni jozibador va tushunarli dashboardlar (Tableau, Power BI, Chart.js) orqali vizuallashtirish.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ─── PROJECTS ─── -->
-        <section id="projects" class="container">
-            <span class="section-tag">Portfolio</span>
-            <h2 class="section-title">Tanlangan Loyihalar</h2>
-            
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <article class="project-card glass reveal">
-                    <div class="project-preview">
-                        <img src="assets/project-bank.png" alt="Islamic Bank Risk Analysis">
-                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">FinTech / ML</span>
-                        <h3>Islamic Bank Risk System</h3>
-                        <p class="project-desc">Islomiy moliya qoidalari asosida mijozlarning kredit riskini tahlil qiluvchi va Shariat muvofiqligini tekshiruvchi innovatsion tizim.</p>
-                        <div class="project-tags">
-                            <span class="tag">XGBoost</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                        <a href="projects/islamic-bank-risk-analysis/frontend/index.html" target="_blank" class="project-link">
-                            Demosini ko'rish <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="project-card glass reveal">
-                    <div class="project-preview">
-                        <img src="assets/project-hospital.png" alt="Hospital BI System">
-                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Business Intelligence</span>
-                        <h3>MedSystem SaaS BI</h3>
-                        <p class="project-desc">Shifoxonalar ma'lumotlarini markazlashtirilgan holda tahlil qiluvchi va bemorlar dinamikasini bashorat qiluvchi SaaS dashboard.</p>
-                        <div class="project-tags">
-                            <span class="tag">Chart.js</span>
-                            <span class="tag">SQL Server</span>
-                            <span class="tag">BI Tools</span>
-                        </div>
-                        <a href="#" class="project-link">
-                            Batafsil ma'lumot <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="project-card glass reveal">
-                    <div class="project-preview">
-                        <img src="assets/project-car.png" alt="Car Data Analysis">
-                        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));"></div>
-                    </div>
-                    <div class="project-content">
-                        <span class="project-category">Data Analysis</span>
-                        <h3>Car Market Analytics</h3>
-                        <p class="project-desc">Avtomobil bozori tendensiyalarini tahlil qiluvchi va narxlarni bashorat qiluvchi kompleks ma'lumotlar vizualizatsiyasi.</p>
-                        <div class="project-tags">
-                            <span class="tag">Pandas</span>
-                            <span class="tag">Seaborn</span>
-                            <span class="tag">ML Regression</span>
-                        </div>
-                        <a href="#" class="project-link">
-                            Loyihani ko'rish <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- ─── CONTACT ─── -->
-        <section id="contact" class="container">
-            <div class="contact-container glass reveal">
-                <div class="contact-info">
-                    <h2>Keling, gaplashamiz!</h2>
-                    <p style="color: var(--text-secondary); margin-bottom: 3rem;">Yangi g'oyalar yoki loyihalar bo'yicha hamkorlikka doim tayyorman.</p>
-                    
-                    <ul class="contact-details">
-                        <li class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Email</p>
-                                <span>abdirasulovjumanazar@gmail.com</span>
-                            </div>
-                        </li>
-                        <li class="contact-item">
-                            <div class="contact-icon"><i class="fab fa-telegram-plane"></i></div>
-                            <div>
-                                <p style="font-size: 0.8rem; color: var(--text-secondary);">Telegram</p>
-                                <span>@Abdirasulov_Jumanazar</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <form class="contact-form" onsubmit="event.preventDefault(); alert('Xabaringiz qabul qilindi! Rahmat.');">
-                    <div class="form-group">
-                        <label>Ismingiz</label>
-                        <input type="text" class="form-control" placeholder="Jumanazar Abdirasulov" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email manzilingiz</label>
-                        <input type="email" class="form-control" placeholder="misol@mail.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Xabaringiz</label>
-                        <textarea class="form-control" rows="5" placeholder="Loyiha haqida qisqacha..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Xabar yuborish <i class="fas fa-paper-plane" style="margin-left: 10px;"></i></button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="container">
-        <div class="footer-content">
-            <p style="font-size: 0.9rem; color: var(--text-secondary);">&copy; 2026 Jumanazar. Barcha huquqlar himoyalangan.</p>
-            <div class="social-links">
-                <a href="https://github.com/abdirasulovjumanazar" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/jumanazar" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://t.me/Abdirasulov_Jumanazar" target="_blank"><i class="fab fa-telegram"></i></a>
-            </div>
+      <section id="focus">
+        <div class="shead">
+          <h2>What I work on</h2>
+          <span class="mono count">Three lines of work</span>
         </div>
-    </footer>
+        <div class="pillars">
+          <article class="pillar">
+            <p class="mono idx">AI systems</p>
+            <h3>Agents, RAG and tools</h3>
+            <p>LangGraph agents that turn a question into SQL and an answer, retrieval pipelines over
+              real document sets, and MCP plugins that connect a model to Slack, Gmail and Notion.
+              Native tool calling, streaming responses, and guardrails written in code rather than
+              asked for in a prompt.</p>
+          </article>
+          <article class="pillar">
+            <p class="mono idx">Applied ML</p>
+            <h3>Models that survive contact</h3>
+            <p>Credit-default scoring on imbalanced portfolios, two-stage detection on live video,
+              NDVI time series from Sentinel imagery, Uzbek speech recognition. Measured with AUC,
+              mAP and top-1 — and explained with SHAP, permutation importance and partial dependence.</p>
+          </article>
+          <article class="pillar">
+            <p class="mono idx">Platform</p>
+            <h3>Services, not notebooks</h3>
+            <p>FastAPI services with typed contracts, structured JSON logging, request IDs, API-key
+              auth and concurrency limits; PostgreSQL and Redis behind them; Docker Compose and Nginx
+              in front. Deterministic test suites that run without a network or a model.</p>
+          </article>
+        </div>
+      </section>
 
-    <!-- JavaScript -->
-    <script src="js/main.js"></script>
+      <section id="experience">
+        <div class="shead">
+          <h2>Experience</h2>
+          <span class="mono count">Apr 2026 — present</span>
+        </div>
+        <div class="job">
+          <p class="when mono">Apr 2026 — Present</p>
+          <div>
+            <h3>AI Engineer</h3>
+            <p class="org">TenzorSoft — Tashkent, Uzbekistan</p>
+            <ul class="duties">
+              <li>Design and ship the full AI stack for client products: chatbot interfaces,
+                retrieval-augmented generation pipelines, and autonomous agents that plan and act.</li>
+              <li>Built the AI service behind an ERP's procurement module — material de-duplication,
+                RFQ quotation comparison, non-moving stock analysis and price research — as typed
+                FastAPI endpoints the main backend calls.</li>
+              <li>Built a regional government assistant that answers natural-language questions over
+                a statistics database: a LangGraph pipeline routes the question, picks the table,
+                writes and repairs SQL, then streams the answer and generates report files with
+                charts.</li>
+              <li>Develop AI Skills and MCP plugins that connect models to real tools — Slack, Gmail,
+                Notion — plus the ML models and data pipelines behind production features.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <div class="shead">
+          <h2>Selected work</h2>
+          <span class="mono count">8 systems</span>
+        </div>
+
+        <div class="works">
+
+          <article class="work">
+            <div class="meta mono">
+              <span class="domain">Financial ML</span>
+              <span>2025 — 2026</span>
+              <span>Solo project</span>
+            </div>
+            <div>
+              <h3>Islamic Bank Risk Analysis Platform</h3>
+              <p>Uzbekistan approved its Islamic banking law in 2026; this is the credit-risk
+                infrastructure a bank entering that market needs on day one. An <strong>ensemble of
+                logistic regression, random forest, XGBoost and LightGBM</strong> produces PD, LGD and
+                expected loss for every application, with a SHAP explanation attached to each
+                decision. On top of the model sit a Sharia compliance engine covering eight AAOIFI
+                contract types, AML/FATF pattern scoring, IFRS 9 stage classification, and an
+                immutable audit log. Portfolio risk is measured with Vasicek ASRF simulation, Monte
+                Carlo stress tests, and VaR/CVaR at 95%.</p>
+              <div class="metrics">
+                <div class="metric"><b>0.83+</b><span class="mono">ROC-AUC, imbalanced data</span></div>
+                <div class="metric"><b>8</b><span class="mono">AAOIFI contract types</span></div>
+                <div class="metric"><b>3</b><span class="mono">interface languages</span></div>
+              </div>
+              <div class="chips">
+                <span class="chip">XGBoost</span><span class="chip">LightGBM</span><span class="chip">scikit-learn</span>
+                <span class="chip">SHAP</span><span class="chip">SMOTE</span><span class="chip">FastAPI</span>
+                <span class="chip">SQLAlchemy 2.0</span><span class="chip">PostgreSQL 16</span><span class="chip">Redis 7</span>
+                <span class="chip">JWT RS256</span><span class="chip">Docker</span><span class="chip">Nginx</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="meta mono">
+              <span class="domain">Production AI service</span>
+              <span>2026</span>
+              <span>TenzorSoft</span>
+            </div>
+            <div>
+              <h3>MM AI — procurement intelligence for an ERP</h3>
+              <p>The analysis layer behind an ERP's AI endpoints, built as a separate service so the
+                main backend stays thin. Five features ship today: material duplicate detection
+                (transliteration-aware normalisation, numeric signatures, similarity metrics), RFQ
+                quotation comparison, non-moving stock analysis straight from the database, internal
+                price analysis, and external market-price research. Every feature is one folder —
+                router, schema, service, README — so a new engineer can read one task without loading
+                the rest. <strong>The test suite disables the LLM by default</strong>, which is why
+                it runs in about thirteen seconds with no network and no model.</p>
+              <div class="metrics">
+                <div class="metric"><b>491</b><span class="mono">deterministic tests</span></div>
+                <div class="metric"><b>~13s</b><span class="mono">full suite, offline</span></div>
+                <div class="metric"><b>5</b><span class="mono">shipped features</span></div>
+              </div>
+              <div class="chips">
+                <span class="chip">FastAPI</span><span class="chip">Ollama</span><span class="chip">httpx</span>
+                <span class="chip">Pydantic</span><span class="chip">structured logging</span><span class="chip">pytest</span>
+                <span class="chip">ruff</span><span class="chip">Docker Compose</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="meta mono">
+              <span class="domain">Computer vision</span>
+              <span>2026</span>
+              <span>Solo project</span>
+            </div>
+            <div>
+              <h3>SafeVision AI — hard-hat compliance monitoring</h3>
+              <p>Construction-site cameras, checked in real time for missing helmets, with a Telegram
+                alert when a violation holds. A single detector kept calling caps, hair and raised
+                hands "helmet", so the pipeline became <strong>two stages</strong>: YOLO11m locates
+                heads, then a YOLO11s classifier crops each head and answers one question — is that
+                an actual construction helmet? The second stage costs 0.1 ms and removed the false
+                positives the detector alone could not.</p>
+              <div class="metrics">
+                <div class="metric"><b>0.946</b><span class="mono">detector mAP50</span></div>
+                <div class="metric"><b>99.4%</b><span class="mono">classifier top-1</span></div>
+                <div class="metric"><b>133</b><span class="mono">FPS inference</span></div>
+              </div>
+              <div class="chips">
+                <span class="chip">YOLO11</span><span class="chip">PyTorch</span><span class="chip">Ultralytics</span>
+                <span class="chip">ByteTrack</span><span class="chip">OpenCV</span><span class="chip">FastAPI</span>
+                <span class="chip">Next.js</span><span class="chip">SQLite</span><span class="chip">Telegram API</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="meta mono">
+              <span class="domain">LLM agents</span>
+              <span>2026</span>
+              <span>TenzorSoft</span>
+            </div>
+            <div>
+              <h3>Bukhara Regional AI Assistant</h3>
+              <p>Ask a regional statistics database a question in plain Uzbek and get back an answer,
+                a table, or a full report. A <strong>LangGraph state machine</strong> decides whether
+                the question needs the database at all, chooses the right table, writes SQL, runs it,
+                and — when the result comes back empty or broken — feeds the error back and retries
+                instead of failing the user. Answers stream over server-sent events, and the report
+                flow produces a downloadable document with charts. Deployed as a microservice behind
+                the region's main backend.</p>
+              <div class="metrics">
+                <div class="metric"><b>391</b><span class="mono">commits</span></div>
+                <div class="metric"><b>SSE</b><span class="mono">token streaming</span></div>
+                <div class="metric"><b>3</b><span class="mono">answer flows</span></div>
+              </div>
+              <div class="chips">
+                <span class="chip">LangGraph</span><span class="chip">Gemini</span><span class="chip">Ollama</span>
+                <span class="chip">text-to-SQL</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
+                <span class="chip">SSE</span><span class="chip">Docker</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="meta mono">
+              <span class="domain">Geospatial ML</span>
+              <span>2026</span>
+              <span>TenzorSoft</span>
+            </div>
+            <div>
+              <h3>Agro AI — field health from orbit</h3>
+              <p>Draw a field boundary and the service pulls its Sentinel history from Google Earth
+                Engine, builds <strong>NDVI and NDMI time series</strong>, masks the raster to the
+                exact polygon, and reads the seasonal curve: bare soil, winter cover, or a crop at
+                peak. A model then turns the numbers into an agronomist's recommendation — likely
+                crop, drought and infection risk, fertiliser need. Built over district boundaries for
+                the Tashkent, Bukhara and Qashqadaryo regions, with an STRtree index so parcel
+                lookups stay fast at scale.</p>
+              <div class="metrics">
+                <div class="metric"><b>256</b><span class="mono">commits</span></div>
+                <div class="metric"><b>3</b><span class="mono">regions mapped</span></div>
+                <div class="metric"><b>2</b><span class="mono">spectral indices tracked</span></div>
+              </div>
+              <div class="chips">
+                <span class="chip">Google Earth Engine</span><span class="chip">Sentinel-2</span><span class="chip">rasterio</span>
+                <span class="chip">Shapely / STRtree</span><span class="chip">GeoJSON</span><span class="chip">NumPy</span>
+                <span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work">
+            <div class="meta mono">
+              <span class="domain">Voice agents</span>
+              <span>2026</span>
+              <span>Solo project</span>
+            </div>
+            <div>
+              <h3>Secretar AI — an Uzbek voice assistant that stays on your machine</h3>
+              <p>A tray-resident assistant with the whole pipeline under your own control: an offline
+                Vosk wake word, a GPU Uzbek Whisper fine-tune for speech-to-text, your own LLM over
+                Ollama with native tool calling, and Uzbek XTTS speech played batch by batch so the
+                reply starts before it has finished generating. Multi-step requests hand off to a
+                planner → executor → error-handler loop that runs in the background.
+                <strong>Safety is enforced in code, not requested in the prompt</strong>: destructive
+                tools stay locked until the user actually confirms, the filesystem is an allowlist
+                that refuses credential files outright, and untrusted content — PDF text, OCR,
+                scraped pages — is fenced as data and blocks destructive tools for the rest of the
+                turn.</p>
+              <div class="chips">
+                <span class="chip">Whisper (uz fine-tune)</span><span class="chip">Vosk</span><span class="chip">XTTS</span>
+                <span class="chip">Ollama tool calling</span><span class="chip">planner / executor agent</span>
+                <span class="chip">system tray UI</span><span class="chip">Python</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="more">
+          <article>
+            <p class="mono domain">Industrial AI · 2026</p>
+            <h4>Virtual SCADA + AI Factory</h4>
+            <p>A full industrial stack built entirely in software, with no hardware purchased: a
+              Python sensor simulator feeding OpenPLC over Modbus TCP, an Ignition SCADA dashboard, a
+              logger writing into PostgreSQL every second, and a FastAPI layer exposing current
+              values, history, anomaly detection and an LLM operator assistant. Includes a vision
+              scraper that screenshots closed legacy SCADA screens and turns them into structured
+              JSON where no Modbus or API access exists.</p>
+          </article>
+          <article>
+            <p class="mono domain">Speech &amp; education · 2026</p>
+            <h4>Tajvid Coach</h4>
+            <p>A Qur'an reading coach for Uzbek speakers who cannot yet read Arabic script. The
+              learner reads a letter or syllable aloud, the system listens, and it checks
+              articulation point and manner — then corrects in Uzbek, using the vocabulary of the
+              standard <em>Muallimi Soniy</em> primer. Designed around a real constraint: one teacher
+              cannot hear thirty children pronounce at once.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="stack">
+        <div class="shead">
+          <h2>Stack</h2>
+          <span class="mono count">Tools I reach for</span>
+        </div>
+        <dl class="stack">
+          <div class="row">
+            <dt class="mono">AI systems</dt>
+            <dd>
+              <span class="chip">RAG</span><span class="chip">AI agents</span><span class="chip">Chatbots</span>
+              <span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">MCP plugins</span>
+              <span class="chip">AI Skills</span><span class="chip">Ollama</span><span class="chip">Gemini</span>
+              <span class="chip">tool calling</span><span class="chip">evals</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">Machine learning</dt>
+            <dd>
+              <span class="chip">Linear / Logistic Regression</span><span class="chip">Decision Trees</span>
+              <span class="chip">Random Forest</span><span class="chip">XGBoost</span><span class="chip">LightGBM</span>
+              <span class="chip">K-Means</span><span class="chip">SMOTE</span><span class="chip">SHAP</span>
+              <span class="chip">Permutation Importance</span><span class="chip">PDP</span><span class="chip">Monte Carlo</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">Vision &amp; speech</dt>
+            <dd>
+              <span class="chip">PyTorch</span><span class="chip">YOLO11</span><span class="chip">Ultralytics</span>
+              <span class="chip">OpenCV</span><span class="chip">ByteTrack</span><span class="chip">Whisper</span>
+              <span class="chip">Vosk</span><span class="chip">XTTS</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">ML engineering</dt>
+            <dd>
+              <span class="chip">scikit-learn Pipeline</span><span class="chip">OneHotEncoder</span>
+              <span class="chip">MinMaxScaler</span><span class="chip">ROC-AUC</span><span class="chip">CRISP-DM</span>
+              <span class="chip">model versioning</span><span class="chip">retraining pipelines</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">Data &amp; analysis</dt>
+            <dd>
+              <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+              <span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">EDA</span>
+              <span class="chip">Statistical analysis</span><span class="chip">rasterio</span><span class="chip">Shapely</span>
+              <span class="chip">Google Earth Engine</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">Backend &amp; data</dt>
+            <dd>
+              <span class="chip">FastAPI</span><span class="chip">Pydantic</span><span class="chip">SQLAlchemy</span>
+              <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
+              <span class="chip">Redis</span><span class="chip">SQL</span><span class="chip">ETL &amp; data cleaning</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">Business intelligence</dt>
+            <dd>
+              <span class="chip">Power BI (DAX)</span><span class="chip">Tableau</span>
+              <span class="chip">Excel — Pivot Tables</span><span class="chip">Power Query</span>
+            </dd>
+          </div>
+          <div class="row">
+            <dt class="mono">Tooling</dt>
+            <dd>
+              <span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">GitLab</span>
+              <span class="chip">Docker</span><span class="chip">Docker Compose</span><span class="chip">Nginx</span>
+              <span class="chip">pytest</span><span class="chip">ruff</span><span class="chip">Jupyter</span>
+              <span class="chip">VS Code</span><span class="chip">Postman</span>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="education">
+        <div class="shead">
+          <h2>Education &amp; languages</h2>
+          <span class="mono count">TUIT · Tashkent</span>
+        </div>
+        <div class="edu">
+          <div>
+            <div class="entry">
+              <div>
+                <h3>MSc, Data Science — 2nd year</h3>
+                <p class="sub">Tashkent University of Information Technologies (TUIT)</p>
+              </div>
+              <p class="when mono">Ongoing</p>
+            </div>
+            <div class="entry">
+              <div>
+                <h3>BSc, Engineer-Programmer</h3>
+                <p class="sub">TUIT Karshi Branch (TUITKF)</p>
+              </div>
+              <p class="when mono">Sep 2021 — May 2025</p>
+            </div>
+            <div class="entry">
+              <div>
+                <h3>Complete Data Science Training</h3>
+                <p class="sub">Udemy — Python, statistics, ML, deep learning</p>
+              </div>
+              <p class="when mono">Course</p>
+            </div>
+            <div class="entry">
+              <div>
+                <h3>Data Science va Sun'iy Intellekt</h3>
+                <p class="sub">Mohirdev — ML, DL, NLP, audio ML, PostgreSQL</p>
+              </div>
+              <p class="when mono">Course</p>
+            </div>
+          </div>
+
+          <div>
+            <p class="mono langhead">Languages</p>
+            <div class="langs">
+              <div class="lang">
+                <span>Uzbek</span>
+                <span class="bar"><i style="width:100%"></i></span>
+                <span class="mono lvl">Native</span>
+              </div>
+              <div class="lang">
+                <span>English</span>
+                <span class="bar"><i style="width:70%"></i></span>
+                <span class="mono lvl">Upper-Int.</span>
+              </div>
+              <div class="lang">
+                <span>Russian</span>
+                <span class="bar"><i style="width:50%"></i></span>
+                <span class="mono lvl">B1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="shead">
+          <h2>Get in touch</h2>
+          <span class="mono count">Tashkent · GMT+5</span>
+        </div>
+        <div class="contact">
+          <a href="mailto:abdirasulovjumanazar@gmail.com">
+            <span class="mono">Email</span>
+            <b>abdirasulovjumanazar@gmail.com</b>
+          </a>
+          <div class="info">
+            <span class="mono">Based in</span>
+            <b>Tashkent, Uzbekistan</b>
+          </div>
+          <a href="https://github.com/abdirasulovjumanazar" target="_blank" rel="noopener">
+            <span class="mono">GitHub</span>
+            <b>abdirasulovjumanazar</b>
+          </a>
+          <a href="https://linkedin.com/in/abdirasulovjumanazar" target="_blank" rel="noopener">
+            <span class="mono">LinkedIn</span>
+            <b>in/abdirasulovjumanazar</b>
+          </a>
+        </div>
+      </section>
+
+      <footer class="mono">
+        <span>Jumanazar Abdirasulov — AI Engineer, Tashkent</span>
+        <span>Updated August 2026</span>
+      </footer>
+
+    </main>
+  </div>
+</div>
+
+<script>
+(function () {
+  var cv = document.getElementById('trace');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d');
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var W = 0, H = 0, progress = reduce ? 1 : 0;
+
+    function css(name) {
+      return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+    }
+    function wave(x, a, b, c) {
+      return 0.5
+        + 0.26 * Math.sin(x * a + 0.4)
+        + 0.13 * Math.sin(x * b + 1.7)
+        + 0.06 * Math.sin(x * c + 2.9);
+    }
+    function trail(p, a, b, c, pad) {
+      var n = 220, cut = Math.max(2, Math.floor(n * p)), i, t, x, y;
+      ctx.beginPath();
+      for (i = 0; i <= cut; i++) {
+        t = i / n;
+        x = t * W;
+        y = pad + (1 - wave(t * 6.2, a, b, c)) * (H - pad * 2);
+        if (i === 0) { ctx.moveTo(x, y); } else { ctx.lineTo(x, y); }
+      }
+      t = cut / n;
+      return { x: t * W, y: pad + (1 - wave(t * 6.2, a, b, c)) * (H - pad * 2) };
+    }
+    function draw() {
+      if (!W) { return; }
+      ctx.clearRect(0, 0, W, H);
+      var accent = css('--accent') || '#1F3FA8';
+      var accent2 = css('--accent-2') || '#0E7A85';
+      var muted = css('--ink-3') || '#7C889C';
+      var x;
+
+      ctx.save();
+      ctx.globalAlpha = 0.25;
+      ctx.strokeStyle = muted;
+      ctx.lineWidth = 1;
+      for (x = 0; x < W; x += 28) {
+        ctx.beginPath();
+        ctx.moveTo(Math.floor(x) + 0.5, H - 7);
+        ctx.lineTo(Math.floor(x) + 0.5, H);
+        ctx.stroke();
+      }
+      ctx.restore();
+
+      ctx.save();
+      ctx.globalAlpha = 0.4;
+      ctx.strokeStyle = accent2;
+      ctx.lineWidth = 1;
+      trail(progress, 4.3, 11.9, 23.1, 16);
+      ctx.stroke();
+      ctx.restore();
+
+      ctx.save();
+      var head = trail(progress, 7.1, 17.3, 31.0, 12);
+      ctx.strokeStyle = accent;
+      ctx.globalAlpha = 0.8;
+      ctx.lineWidth = 1.6;
+      ctx.lineJoin = 'round';
+      ctx.stroke();
+      ctx.lineTo(head.x, H);
+      ctx.lineTo(0, H);
+      ctx.closePath();
+      ctx.globalAlpha = 0.1;
+      ctx.fillStyle = accent;
+      ctx.fill();
+      ctx.restore();
+
+      if (progress < 1) {
+        ctx.save();
+        ctx.fillStyle = accent;
+        ctx.beginPath();
+        ctx.arc(head.x, head.y, 2.4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+    function resize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = cv.clientWidth;
+      H = cv.clientHeight;
+      cv.width = Math.max(1, Math.round(W * dpr));
+      cv.height = Math.max(1, Math.round(H * dpr));
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw();
+    }
+
+    var start = null;
+    function tick(ts) {
+      if (start === null) { start = ts; }
+      var t = Math.min(1, (ts - start) / 1500);
+      progress = 1 - Math.pow(1 - t, 3);
+      draw();
+      if (t < 1) { requestAnimationFrame(tick); }
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    if (window.matchMedia) {
+      var dark = window.matchMedia('(prefers-color-scheme: dark)');
+      if (dark.addEventListener) { dark.addEventListener('change', draw); }
+    }
+    if (!reduce) { requestAnimationFrame(tick); }
+  }
+
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a[href^="#"]'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var map = {};
+    links.forEach(function (a) {
+      var el = document.querySelector(a.getAttribute('href'));
+      if (el) { map[el.id] = a; }
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (a) { a.removeAttribute('aria-current'); });
+          if (map[e.target.id]) { map[e.target.id].setAttribute('aria-current', 'true'); }
+        }
+      });
+    }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
+    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+  }
+})();
+</script>
+
 </body>
 </html>
